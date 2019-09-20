@@ -7,11 +7,12 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Matteo Fasiolo, Simon N. Wood" />
 
-<meta name="date" content="2019-08-21" />
+<meta name="date" content="2019-09-20" />
 
 <title>Ozone: solution</title>
 
@@ -270,7 +271,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -344,18 +344,6 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -377,7 +365,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Ozone: solution</h1>
 <h4 class="author">Matteo Fasiolo, Simon N. Wood</h4>
-<h4 class="date">2019-08-21</h4>
+<h4 class="date">2019-09-20</h4>
 
 </div>
 
@@ -413,15 +401,15 @@ gam.check(b)</code></pre>
 ## indicate that k is too low, especially if edf is close to k'.
 ## 
 ##               k'  edf k-index p-value
-## s(vh)       9.00 2.47    1.05    0.77
-## s(wind)     9.00 2.47    1.03    0.69
-## s(humidity) 9.00 2.26    1.07    0.92
-## s(temp)     9.00 4.65    1.09    0.93
-## s(ibh)      9.00 2.76    0.95    0.19
-## s(dpg)      9.00 2.77    1.07    0.89
-## s(ibt)      9.00 7.24    0.96    0.20
-## s(vis)      9.00 6.39    1.08    0.90
-## s(doy)      9.00 5.12    1.02    0.59</code></pre>
+## s(vh)       9.00 2.47    1.05    0.82
+## s(wind)     9.00 2.47    1.03    0.67
+## s(humidity) 9.00 2.26    1.07    0.85
+## s(temp)     9.00 4.65    1.09    0.97
+## s(ibh)      9.00 2.76    0.95    0.21
+## s(dpg)      9.00 2.77    1.07    0.85
+## s(ibt)      9.00 7.24    0.96    0.28
+## s(vis)      9.00 6.39    1.08    0.94
+## s(doy)      9.00 5.12    1.02    0.56</code></pre>
 <p>The residuals vs linear predictor plot clearly shows that the variance increases with the mean.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Refit using the Gamma response distribution:</li>
@@ -444,16 +432,16 @@ gam.check(b)</code></pre>
 ## Basis dimension (k) checking results. Low p-value (k-index&lt;1) may
 ## indicate that k is too low, especially if edf is close to k'.
 ## 
-##               k'  edf k-index p-value   
-## s(vh)       9.00 1.15    1.05   0.860   
-## s(wind)     9.00 1.00    0.95   0.240   
-## s(humidity) 9.00 2.18    1.03   0.745   
-## s(temp)     9.00 4.08    1.05   0.850   
-## s(ibh)      9.00 2.68    0.96   0.285   
-## s(dpg)      9.00 3.43    1.01   0.680   
-## s(ibt)      9.00 1.00    0.85   0.005 **
-## s(vis)      9.00 2.59    0.99   0.500   
-## s(doy)      9.00 4.62    0.92   0.100 . 
+##               k'  edf k-index p-value    
+## s(vh)       9.00 1.15    1.05    0.85    
+## s(wind)     9.00 1.00    0.95    0.28    
+## s(humidity) 9.00 2.18    1.03    0.77    
+## s(temp)     9.00 4.08    1.05    0.83    
+## s(ibh)      9.00 2.68    0.96    0.23    
+## s(dpg)      9.00 3.43    1.01    0.66    
+## s(ibt)      9.00 1.00    0.85  &lt;2e-16 ***
+## s(vis)      9.00 2.59    0.99    0.54    
+## s(doy)      9.00 4.62    0.92    0.07 .  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>The residuals vs linear predictor and the QQ-plot look better. In the response vs fitted values plot we still see that the variance of the response increases with the fitted values (the mean), but this is being modelled via the gamma distribution (as demonstrated by the residuals vs linear predictor plot).</p>
@@ -600,6 +588,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
